@@ -127,10 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Expression_Parser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Operand.cpp" />
+    <ClCompile Include="Operator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Infix.h" />
+    <ClInclude Include="Expression_Parser.h" />
+    <ClInclude Include="Operand.h" />
+    <ClInclude Include="Operator.h" />
+    <ClInclude Include="Operator_Precedence.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
