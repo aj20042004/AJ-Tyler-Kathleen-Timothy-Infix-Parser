@@ -1,7 +1,7 @@
 #ifndef OPERATOR_PRECEDENCE
 #define OPERATOR_PRECEDENCE
 
-enum class Operator_Precedence {
+enum Operator_Precedence {
 	POWER = 7,
 	MULTIPLY_DIVIDE_MOD = 6,
 	ADD_SUBTRACT = 5,
