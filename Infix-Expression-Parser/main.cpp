@@ -27,7 +27,7 @@ int main() {
 
 		string infix_string;
 		infix_string += ' ';
-	
+
 		for (int i = 0; i < line_string.size(); i++) {
 
 			char token = line_string[i];
@@ -51,7 +51,20 @@ int main() {
 			else if (isdigit(token)) {
 
 				infix_string += token;
-				infix_string += ' ';
+
+				char next_token = line_string[i + 1];
+				if (next_token == '\x12') {
+					next_token = '-';
+				}
+
+				if (i + 1 < line_string.size() && next_token == '-') {
+					infix_string += ' ';
+					continue;
+				}
+
+				else if (i + 1 < line_string.size() && !isdigit(line_string[i + 1])) {
+					infix_string += ' ';
+				}
 			}
 
 			else {
@@ -60,7 +73,7 @@ int main() {
 				if (i + 1 < line_string.size() && line_string[i + 1] == ' ') {
 					infix_string += ' ';
 				}
-				
+
 				if (i + 1 < line_string.size() && isdigit(line_string[i + 1])) {
 					infix_string += ' ';
 				}
@@ -71,7 +84,11 @@ int main() {
 		infix_string += ' ';
 
 		int result = parser.parse_and_evaluate(infix_string);
-		cout << "The Result is: " << result << endl;
+
+		if (result != -9999999) {
+			cout << "The Result is: " << result << endl;
+		}
+
 	}
 
 	input_file.close();

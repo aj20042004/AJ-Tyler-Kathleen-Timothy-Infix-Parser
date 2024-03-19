@@ -22,9 +22,9 @@ int Expression_Parser::parse_and_evaluate(const string& infix_string) {
 		int result_num = evaluate_postfix(postfix_string);
 		return result_num;
 	}
-	catch (const	exception& err) {
+	catch (const exception& err) {
 		handle_error(err.what());
-		return 0;
+		return -9999999;
 	}
 }
 
@@ -147,7 +147,9 @@ int Expression_Parser::evaluate_postfix(const string& postfix) {
 			if (current_token == "*") { operand_stk.push(left_operand * right_operand); }
 			
 			if (current_token == "/") {
-				if (!right_operand) { throw exception("Divide by zero"); }
+				if (!right_operand) { 
+					throw exception("Divide by zero");
+				}
 				operand_stk.push(left_operand / right_operand);
 			}
 
