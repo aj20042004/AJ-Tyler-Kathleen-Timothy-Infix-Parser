@@ -18,8 +18,6 @@ public:
 
 private:
 
-	//stack<int> operand_stack;
-
 	int precedence(const string&);
 
 	int power_function(int,int);

@@ -1,3 +1,19 @@
+
+// Questions for professor:
+// ------------------------------------------------------------------------------------------------------------- 
+// 1) Do we need to check for divide by zero error while using % ?
+// 2) Questions regarding the functionality of Comparison, Equality comparison, Logical And, Logical Or
+
+// Need to Complete:
+// -------------------------------------------------------------------------------------------------------------
+// Operand class and in-line comments - Tyler Blackmore
+// Creating Test cases, checking the correctness of the program, in-line comments for main file ? - Kathleen Dunn
+// Operator class and in-line comments - Timothy Huffman
+
+// Bugs needs to be fixed:
+// -------------------------------------------------------------------------------------------------------------
+// ?
+
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -10,8 +26,8 @@ using namespace std;
 
 int main() {
 
-	std::wifstream input_file;
-	input_file.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+	wifstream input_file;
+	input_file.imbue(locale(locale::empty(), new codecvt_utf8<wchar_t>));
 	input_file.open("Test.txt");
 
 	if (!input_file) {
@@ -21,7 +37,7 @@ int main() {
 
 	Expression_Parser parser;
 
-	std::wstring line_string;
+	wstring line_string;
 
 	while (getline(input_file, line_string)) {
 
@@ -43,7 +59,7 @@ int main() {
 
 			if (token == '+' || token == '-' || token == '*' || token == '/' || token == '%' || token == '^' ||
 				token == '(' || token == ')') {
-				//infix_string += ' ';
+			
 				infix_string += token;
 				infix_string += ' ';
 			}
