@@ -1,6 +1,7 @@
 #ifndef OPERATOR_PRECEDENCE
 #define OPERATOR_PRECEDENCE
 
+// Enum class
 enum Operator_Precedence {
 	POWER = 7,
 	MULTIPLY_DIVIDE_MOD = 6,
