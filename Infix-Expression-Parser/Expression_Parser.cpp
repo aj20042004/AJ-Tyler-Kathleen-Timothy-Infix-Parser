@@ -17,12 +17,12 @@ Expression_Parser::Expression_Parser() {}
 Expression_Parser::~Expression_Parser() {}
 
 /** Returns the result of the infix expression after evaluating
-	@param infix_string: expression to be converted into postfix 
+	@param infix_string: expression to be converted into postfix
 	@return: result number
 	@throws exception: error message
 */
 int Expression_Parser::parse_and_evaluate(const string& infix_string) {
-	
+
 	// Try and catch block
 	try {
 
@@ -31,7 +31,7 @@ int Expression_Parser::parse_and_evaluate(const string& infix_string) {
 
 		// Evaluating the postfix
 		int result_num = evaluate_postfix(postfix_string);
-		
+
 		// returning the result
 		return result_num;
 	}
@@ -101,13 +101,47 @@ string Expression_Parser::convert_to_postfix(const string& infix_string) {
 	istringstream iss(infix_string);
 	ostringstream output_string;
 	stack<string> operand_stk;
-	string token;
+	string token , new_token;
 
 	// Creating a while loop to parse the infix string
-	while (iss >> token) {
- 
+	for (int i = 0; i < infix_string.size(); i++) {
+
+		// Adding the character to the token
+		token = infix_string[i];
+
+		// Checking whether the token is empty
+		if (token == " ") {
+			continue;
+		}
+
+		// Checking if token's next character is either '=', '&', '|'
+		if (token == ">" || token == "<" || token == "=" || token == "!" || token == "&" || token == "|") {
+
+			if (i < infix_string.size() && (infix_string[i + 1] == '=' || infix_string[i + 1] == '&' || infix_string[i + 1] == '|')) {
+				token += infix_string[i + 1];
+			}
+
+		}
+
 		// Adding token to the output string if the token is digit
-		if (isdigit(token.front())) { output_string << ' ' << token; }
+		if (isdigit(token.front())) {
+
+			// Setting the index variable equal to i
+			int index = i;
+
+			string operand;
+
+			// Creating a digit operand
+			while (isdigit(infix_string[index])) {
+				operand += infix_string[index];
+				index++;
+			}
+
+			output_string << ' ' << operand;
+
+			// Setting the correct index
+			i = index - 1;
+		}
 
 		// Adding token to the stack if the token is "("
 		else if (token == "(") { operand_stk.push(token); }
@@ -126,12 +160,14 @@ string Expression_Parser::convert_to_postfix(const string& infix_string) {
 		else {
 
 			// Adding the elements to the output string if it matches the conditions
-			while (!operand_stk.empty() && operand_stk.top() != "(" && precedence(token) <= precedence(operand_stk.top())) {
+			while (!operand_stk.empty() && operand_stk.top() != "(" && token != "=" && token != "|" && token != "&" && precedence(token) <= precedence(operand_stk.top())) {
 				output_string << ' ' << operand_stk.top();
 				operand_stk.pop();
 			}
 
-			operand_stk.push(token);
+			if (token != "=" && token != "|" && token != "&") {
+				operand_stk.push(token);
+			}
 		}
 	}
 
@@ -145,9 +181,9 @@ string Expression_Parser::convert_to_postfix(const string& infix_string) {
 }
 
 /** Calculates {left_operand} ^ {right_operand}.
-    @param left_operand: base
-    @param right_operand: exponent
-    @return: result of {left_operand} ^ {right_operand}
+	@param left_operand: base
+	@param right_operand: exponent
+	@return: result of {left_operand} ^ {right_operand}
 */
 int Expression_Parser::power_function(int left_operand, int right_operand) {
 	if (right_operand == 0) { return 1; }
@@ -164,7 +200,7 @@ int Expression_Parser::evaluate_postfix(const string& postfix) {
 	// Initializing the variables
 	istringstream iss(postfix);
 	stack<int> operand_stk;
-	string current_token; 
+	string current_token;
 
 	// Creating a while loop 
 	while (iss >> current_token) {
@@ -183,18 +219,18 @@ int Expression_Parser::evaluate_postfix(const string& postfix) {
 			// Supported operators
 			// Addition operator
 			if (current_token == "+") { operand_stk.push(left_operand + right_operand); }
-			
+
 			// Subtraction operator
 			if (current_token == "-") { operand_stk.push(left_operand - right_operand); }
-			
+
 			// Multiplication operator
 			if (current_token == "*") { operand_stk.push(left_operand * right_operand); }
-			
+
 			// Division operator
 			if (current_token == "/") {
 
 				// Checking whether the denominator is 0 and throwing error message
-				if (!right_operand) { 
+				if (!right_operand) {
 					throw exception("Divide by zero");
 				}
 				operand_stk.push(left_operand / right_operand);
@@ -234,7 +270,7 @@ int Expression_Parser::evaluate_postfix(const string& postfix) {
 			if (current_token == "<=") {
 				if (left_operand <= right_operand) { operand_stk.push(1); }
 				else { operand_stk.push(0); }
-			} 
+			}
 
 			// Equal equal operator
 			if (current_token == "==") {
