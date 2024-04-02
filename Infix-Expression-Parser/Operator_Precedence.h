@@ -12,5 +12,4 @@ enum Operator_Precedence {
 	LOGICAL_OR = 1
 };
 
-
 #endif

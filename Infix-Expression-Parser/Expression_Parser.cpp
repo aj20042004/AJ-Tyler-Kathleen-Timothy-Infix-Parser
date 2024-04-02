@@ -101,7 +101,7 @@ string Expression_Parser::convert_to_postfix(const string& infix_string) {
 	istringstream iss(infix_string);
 	ostringstream output_string;
 	stack<string> operand_stk;
-	string token , new_token;
+	string token;
 
 	// Creating a while loop to parse the infix string
 	for (int i = 0; i < infix_string.size(); i++) {

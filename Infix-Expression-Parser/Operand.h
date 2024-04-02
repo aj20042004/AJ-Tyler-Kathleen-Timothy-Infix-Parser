@@ -7,10 +7,9 @@ using namespace std;
 class Operand {
 
 public:
-
-
-private:
-
+	Operand();
+	~Operand();
+	int convert_to_int(const string&);
 };
 
 #endif

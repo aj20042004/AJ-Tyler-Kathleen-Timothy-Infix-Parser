@@ -28,11 +28,11 @@ private:
 	// precedence method to evaluate the expression by orders of operation
 	int precedence(const string&);
 
-	// power function to calculate exponents
-	int power_function(int,int);
-
 	// convert to postfix method for converting the infix into postfix expression
 	string convert_to_postfix(const string&);
+
+	// power function to calculate exponents
+	int power_function(int, int);
 
 	// evaluate_postfix to get the result
 	int evaluate_postfix(const string&);
