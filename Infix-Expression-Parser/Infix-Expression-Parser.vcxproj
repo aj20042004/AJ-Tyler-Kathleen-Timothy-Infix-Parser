@@ -127,16 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Convert_to_postfix.cpp" />
+    <ClCompile Include="Evaluate_postfix.cpp" />
     <ClCompile Include="Expression_Parser.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Operand.cpp" />
-    <ClCompile Include="Operator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Convert_to_postfix.h" />
+    <ClInclude Include="Evaluate_postfix.h" />
     <ClInclude Include="Expression_Parser.h" />
-    <ClInclude Include="Operand.h" />
-    <ClInclude Include="Operator.h" />
-    <ClInclude Include="Operator_Precedence.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

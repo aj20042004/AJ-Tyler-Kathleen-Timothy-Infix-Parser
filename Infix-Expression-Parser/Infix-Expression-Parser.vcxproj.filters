@@ -21,10 +21,10 @@
     <ClCompile Include="Expression_Parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Operand.cpp">
+    <ClCompile Include="Convert_to_postfix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Operator.cpp">
+    <ClCompile Include="Evaluate_postfix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +32,10 @@
     <ClInclude Include="Expression_Parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Operand.h">
+    <ClInclude Include="Convert_to_postfix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Operator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Operator_Precedence.h">
+    <ClInclude Include="Evaluate_postfix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

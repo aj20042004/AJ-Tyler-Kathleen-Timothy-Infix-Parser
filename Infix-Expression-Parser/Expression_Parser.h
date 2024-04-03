@@ -4,7 +4,6 @@
 // Importing the modules
 #include <iostream>
 #include <stack>
-#include "Operator_Precedence.h"
 #include <string>
 
 using namespace std;
@@ -20,22 +19,16 @@ public:
 	// Destructor
 	~Expression_Parser();
 
+	// power function to calculate exponents
+	int power_function(int, int);
+
 	// parsing the infix string and evaluating the result
 	int parse_and_evaluate(const string&);
-
-private:
 
 	// precedence method to evaluate the expression by orders of operation
 	int precedence(const string&);
 
-	// convert to postfix method for converting the infix into postfix expression
-	string convert_to_postfix(const string&);
-
-	// power function to calculate exponents
-	int power_function(int, int);
-
-	// evaluate_postfix to get the result
-	int evaluate_postfix(const string&);
+private:
 
 	// handle_error method for any exception
 	void handle_error(const string&);

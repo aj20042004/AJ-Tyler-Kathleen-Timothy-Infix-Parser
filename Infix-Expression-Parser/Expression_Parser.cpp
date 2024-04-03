@@ -1,7 +1,8 @@
 
 // Importing the modules
 #include "Expression_Parser.h"
-#include "Operator_Precedence.h"
+#include "Convert_to_postfix.h"
+#include "Evaluate_postfix.h"
 #include <iostream>
 #include <cctype>
 #include <sstream>
@@ -26,11 +27,14 @@ int Expression_Parser::parse_and_evaluate(const string& infix_string) {
 	// Try and catch block
 	try {
 
+		Convert_to_postfix convert_postfix_obj;
+		Evaluate_postfix evaluate_postfix_obj;
+
 		// Converting the infix to postfix
-		string postfix_string = convert_to_postfix(infix_string);
+		string postfix_string = convert_postfix_obj.infix_to_postfix(infix_string);
 
 		// Evaluating the postfix
-		int result_num = evaluate_postfix(postfix_string);
+		int result_num = evaluate_postfix_obj.postfix_evaluator(postfix_string);
 
 		// returning the result
 		return result_num;
@@ -51,134 +55,44 @@ int Expression_Parser::parse_and_evaluate(const string& infix_string) {
 */
 int Expression_Parser::precedence(const string& str_operator) {
 
-	Operator_Precedence obj_operator_precedence;
-
 	// precedence of power
 	if (str_operator == "^") {
-		return obj_operator_precedence = POWER;
+		return 7;
 	}
 
 	// precedence of multiply, divide and mod
 	if (str_operator == "*" || str_operator == "/" || str_operator == "%") {
-		return obj_operator_precedence = MULTIPLY_DIVIDE_MOD;
+		return 6;
 	}
 
 	// precedence of add and subtract
 	if (str_operator == "+" || str_operator == "-") {
-		return obj_operator_precedence = ADD_SUBTRACT;
+		return 5;
 	}
 
 	// precedence of comparison
 	if (str_operator == ">" || str_operator == ">=" || str_operator == "<" || str_operator == "<=") {
-		return obj_operator_precedence = COMPARISON;
+		return 4;
 	}
 
 	// precedence of equality
 	if (str_operator == "==" || str_operator == "!=") {
-		return obj_operator_precedence = EQUALITY;
+		return 3;
 	}
 
 	// precedence of logical and
 	if (str_operator == "&&") {
-		return obj_operator_precedence = LOGICAL_AND;
+		return 2;
 	}
 
 	// precedence of logical or
 	if (str_operator == "||") {
-		return obj_operator_precedence = LOGICAL_OR;
+		return 1;
 	}
 
 	throw exception("Unsupported operator");
 }
 
-/** Converts an infix expression to postfix expression.
-	@param infix_string: infix expression to convert
-	@return: postfix expression converted from the infix expression
-*/
-string Expression_Parser::convert_to_postfix(const string& infix_string) {
-
-	// Initializing the variables
-	istringstream iss(infix_string);
-	ostringstream output_string;
-	stack<string> operand_stk;
-	string token;
-
-	// Creating a while loop to parse the infix string
-	for (int i = 0; i < infix_string.size(); i++) {
-
-		// Adding the character to the token
-		token = infix_string[i];
-
-		// Checking whether the token is empty
-		if (token == " ") {
-			continue;
-		}
-
-		// Checking if token's next character is either '=', '&', '|'
-		if (token == ">" || token == "<" || token == "=" || token == "!" || token == "&" || token == "|") {
-
-			if (i < infix_string.size() && (infix_string[i + 1] == '=' || infix_string[i + 1] == '&' || infix_string[i + 1] == '|')) {
-				token += infix_string[i + 1];
-			}
-
-		}
-
-		// Adding token to the output string if the token is digit
-		if (isdigit(token.front())) {
-
-			// Setting the index variable equal to i
-			int index = i;
-
-			string operand;
-
-			// Creating a digit operand
-			while (isdigit(infix_string[index])) {
-				operand += infix_string[index];
-				index++;
-			}
-
-			output_string << ' ' << operand;
-
-			// Setting the correct index
-			i = index - 1;
-		}
-
-		// Adding token to the stack if the token is "("
-		else if (token == "(") { operand_stk.push(token); }
-
-		// Adding elements from stack to output string if the token is ")"
-		else if (token == ")") {
-
-			while (operand_stk.top() != "(") {
-				output_string << ' ' << operand_stk.top();
-				operand_stk.pop();
-			}
-
-			operand_stk.pop();
-		}
-
-		else {
-
-			// Adding the elements to the output string if it matches the conditions
-			while (!operand_stk.empty() && operand_stk.top() != "(" && token != "=" && token != "|" && token != "&" && precedence(token) <= precedence(operand_stk.top())) {
-				output_string << ' ' << operand_stk.top();
-				operand_stk.pop();
-			}
-
-			if (token != "=" && token != "|" && token != "&") {
-				operand_stk.push(token);
-			}
-		}
-	}
-
-	// Adding all the remaining elements to the output string
-	while (!operand_stk.empty()) {
-		output_string << ' ' << operand_stk.top();
-		operand_stk.pop();
-	}
-
-	return output_string.str();
-}
 
 /** Calculates {left_operand} ^ {right_operand}.
 	@param left_operand: base
@@ -188,120 +102,6 @@ string Expression_Parser::convert_to_postfix(const string& infix_string) {
 int Expression_Parser::power_function(int left_operand, int right_operand) {
 	if (right_operand == 0) { return 1; }
 	return left_operand * power_function(left_operand, right_operand - 1);
-}
-
-
-/** Evaluates the postfix expression and returns the result
-	@param: postfix
-	@return: operand_stk.top();
-*/
-int Expression_Parser::evaluate_postfix(const string& postfix) {
-
-	// Initializing the variables
-	istringstream iss(postfix);
-	stack<int> operand_stk;
-	string current_token;
-
-	// Creating a while loop 
-	while (iss >> current_token) {
-
-		// Adding the token to the operand stack if the token is digit
-		if (isdigit(current_token.front())) { operand_stk.push(stoi(current_token)); }
-
-		else {
-
-			// storing the right and left operand
-			int right_operand = operand_stk.top();
-			operand_stk.pop();
-			int left_operand = operand_stk.top();
-			operand_stk.pop();
-
-			// Supported operators
-			// Addition operator
-			if (current_token == "+") { operand_stk.push(left_operand + right_operand); }
-
-			// Subtraction operator
-			if (current_token == "-") { operand_stk.push(left_operand - right_operand); }
-
-			// Multiplication operator
-			if (current_token == "*") { operand_stk.push(left_operand * right_operand); }
-
-			// Division operator
-			if (current_token == "/") {
-
-				// Checking whether the denominator is 0 and throwing error message
-				if (!right_operand) {
-					throw exception("Divide by zero");
-				}
-				operand_stk.push(left_operand / right_operand);
-			}
-
-			// Mod operator
-			if (current_token == "%") {
-				if (!right_operand) { throw exception("Divide by zero"); }
-				operand_stk.push(left_operand % right_operand);
-			}
-
-			// power operator
-			if (current_token == "^") {
-				if (!right_operand) { operand_stk.push(1); }
-				operand_stk.push(power_function(left_operand, right_operand));
-			}
-
-			// greater than operator
-			if (current_token == ">") {
-				if (left_operand > right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-			// greater than or equal operator
-			if (current_token == ">=") {
-				if (left_operand >= right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-			// less than operator
-			if (current_token == "<") {
-				if (left_operand < right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-			// less than or equal operator
-			if (current_token == "<=") {
-				if (left_operand <= right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-			// Equal equal operator
-			if (current_token == "==") {
-				if (left_operand == right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-			// Not equal operator
-			if (current_token == "!=") {
-				if (left_operand != right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-			// Logical and operator
-			if (current_token == "&&") {
-				if (left_operand && right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-			// Logical or operator
-			if (current_token == "||") {
-				if (left_operand || right_operand) { operand_stk.push(1); }
-				else { operand_stk.push(0); }
-			}
-
-		}
-	}
-
-	// returning the top of the operand stack
-	return operand_stk.top();
-
 }
 
 
