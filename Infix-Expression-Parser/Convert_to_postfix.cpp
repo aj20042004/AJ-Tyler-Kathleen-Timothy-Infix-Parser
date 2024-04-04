@@ -37,7 +37,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 		if (token == " ") {
 			continue;
 		}
-
+	
 		// Checking if token's next character is either '=', '&', '|'
 		if (token == ">" || token == "<" || token == "=" || token == "!" || token == "&" || token == "|") {
 
@@ -91,6 +91,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 				operand_stk.pop();
 			}
 
+			 
 			if (token != "=" && token != "|" && token != "&") {
 				operand_stk.push(token);
 			}

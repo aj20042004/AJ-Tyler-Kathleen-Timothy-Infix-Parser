@@ -7,8 +7,9 @@
 
 // Need to Complete:
 // ----------------------------------------------------------------------------------------------------------------------
-// Creating Test cases, checking the correctness of the program - Kathleen Dunn
-// Project report - Timothy Huffman
+// Creating Test cases, checking the correctness of the program, Test cases documentation in report - Kathleen Dunn
+// System design, data structures, 4 ideas for future improvements part in report. Convert_to_postfix 
+//  and Evaluate_postfix files in-line comments - Timothy Huffman
 
 // Bugs needs to be fixed:
 // ----------------------------------------------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ int main() {
 
 	// Using ifstream to open the input file
 	ifstream input_file;
-	input_file.open("Test_case_3.txt");
+	input_file.open("Test_case_1.txt");
 
 	// Checking whether input file can be opened or not
 	if (!input_file) {
