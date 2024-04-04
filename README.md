@@ -29,7 +29,7 @@ License:
  - This project is licensed under the MIT License.
    
 Author:
- - Athul Jaishankar, Timothy Huffman, Kathleen Dunn, Tyler Blackmore.
+ - Athul Jaishankar, Timothy Huffman, Kathleen Dunn.
 
 Version:
  - 1.0.0
