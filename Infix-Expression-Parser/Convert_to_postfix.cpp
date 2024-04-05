@@ -26,7 +26,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 	ostringstream output_string;
 	stack<string> operand_stk;
 	string token;
-
+	
 	// Creating a while loop to parse the infix string
 	for (int i = 0; i < infix_string.size(); i++) {
 
@@ -38,6 +38,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 			continue;
 		}
 	
+
 		// Checking if token's next character is either '=', '&', '|'
 		if (token == ">" || token == "<" || token == "=" || token == "!" || token == "&" || token == "|") {
 
@@ -68,7 +69,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 		}
 
 		// Adding token to the stack if the token is "("
-		else if (token == "(") { operand_stk.push(token); }
+		else if (token == "(") { operand_stk.push(token); }  
 
 		// Adding elements from stack to output string if the token is ")"
 		else if (token == ")") {
@@ -82,7 +83,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 		}
 
 		else {
-
+			
 			// Adding the elements to the output string if it matches the conditions
 			while (!operand_stk.empty() && operand_stk.top() != "(" && token != "=" && token != "|" && token != "&" && 
 				exp_parser_obj.precedence(token) <= exp_parser_obj.precedence(operand_stk.top())) {
