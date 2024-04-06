@@ -7,9 +7,9 @@
 
 // Need to Complete:
 // -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Creating Test cases, checking the correctness of the program, Test cases documentation in report, future requirements ( 4 points )  - Kathleen Dunn
+// Creating Test cases, checking the correctness of the program, Test cases documentation in report, future requirements ( 4 ideas )  - Kathleen Dunn
 // System design, data structures, 4 ideas for future improvements part in report. Convert_to_postfix and Evaluate_postfix files in-line comments - Timothy Huffman
-
+		
 // Bugs needs to be fixed:
 // --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // 1)
