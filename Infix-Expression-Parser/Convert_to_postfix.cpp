@@ -96,7 +96,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 				operand_stk.pop();
 			}
 
-			
+			// Checking if token is not "=", "|", or "&"
 			if (token != "=" && token != "|" && token != "&") {
 				operand_stk.push(token);
 			}

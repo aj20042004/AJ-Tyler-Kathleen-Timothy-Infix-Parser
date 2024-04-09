@@ -39,7 +39,7 @@ int Evaluate_postfix::postfix_evaluator(const string& postfix) {
 
 		else {
 
-			// storing the right and left operand
+			// Storing the right and left operand
 			int right_operand = operand_stk.top();
 			operand_stk.pop();
 			int left_operand = operand_stk.top();
@@ -71,31 +71,31 @@ int Evaluate_postfix::postfix_evaluator(const string& postfix) {
 				operand_stk.push(left_operand % right_operand);
 			}
 
-			// power operator
+			// Power operator
 			if (current_token == "^") {
 				if (!right_operand) { operand_stk.push(1); }
 				operand_stk.push(exp_parser_obj.power_function(left_operand, right_operand));
 			}
 
-			// greater than operator
+			// Greater than operator
 			if (current_token == ">") {
 				if (left_operand > right_operand) { operand_stk.push(1); }
 				else { operand_stk.push(0); }
 			}
 
-			// greater than or equal operator
+			// Greater than or equal operator
 			if (current_token == ">=") {
 				if (left_operand >= right_operand) { operand_stk.push(1); }
 				else { operand_stk.push(0); }
 			}
 
-			// less than operator
+			// Less than operator
 			if (current_token == "<") {
 				if (left_operand < right_operand) { operand_stk.push(1); }
 				else { operand_stk.push(0); }
 			}
 
-			// less than or equal operator
+			// Less than or equal operator
 			if (current_token == "<=") {
 				if (left_operand <= right_operand) { operand_stk.push(1); }
 				else { operand_stk.push(0); }
@@ -128,7 +128,7 @@ int Evaluate_postfix::postfix_evaluator(const string& postfix) {
 		}
 	}
 
-	// returning the top of the operand stack
+	// Returning the top of the operand stack
 	return operand_stk.top();
 
 }

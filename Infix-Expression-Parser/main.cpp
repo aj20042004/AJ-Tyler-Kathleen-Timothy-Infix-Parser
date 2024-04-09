@@ -57,6 +57,7 @@ int main() {
 			break;
 		}
 
+		// Parsing and evaluating the formatted infix string using the parser instance
 		int result = parser.parse_and_evaluate(line_string);
 
 		// Checking for Error
@@ -66,9 +67,9 @@ int main() {
 
 	}
 
-
+	// Closing the input file
 	input_file.close();
 
-
+	// Returning
 	return 0;
 }

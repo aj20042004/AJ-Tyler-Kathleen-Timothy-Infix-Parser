@@ -7,6 +7,7 @@
 
 using namespace std;
 
+
 // Creating Convert to Postfix class
 class Convert_to_postfix {
 
@@ -18,7 +19,7 @@ public:
 	// Destructor
 	~Convert_to_postfix();
 
-	// convert to postfix method for converting the infix into postfix expression
+	// Convert to postfix method for converting the infix into postfix expression
 	string infix_to_postfix(const string&);
 
 };
