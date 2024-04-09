@@ -19,13 +19,13 @@ public:
 	// Destructor
 	~Expression_Parser();
 
-	// power function to calculate exponents
+	// Power function to calculate exponents
 	int power_function(int, int);
 
-	// parsing the infix string and evaluating the result
+	// Parsing the infix string and evaluating the result
 	int parse_and_evaluate(const string&);
 
-	// precedence method to evaluate the expression by orders of operation
+	// Precedence method to evaluate the expression by orders of operation
 	int precedence(const string&);
 
 private:

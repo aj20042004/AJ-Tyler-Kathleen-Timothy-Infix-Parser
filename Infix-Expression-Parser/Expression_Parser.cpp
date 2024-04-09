@@ -36,12 +36,12 @@ int Expression_Parser::parse_and_evaluate(const string& infix_string) {
 		// Evaluating the postfix
 		int result_num = evaluate_postfix_obj.postfix_evaluator(postfix_string);
 
-		// returning the result
+		// Returning the result
 		return result_num;
 	}
 	catch (const exception& err) {
 
-		// catching the error message
+		// Catching the error message
 		handle_error(err.what());
 		return -9999999;
 	}
@@ -90,6 +90,7 @@ int Expression_Parser::precedence(const string& str_operator) {
 		return 1;
 	}
 
+	// Throw error if operator is not supported
 	throw exception("Unsupported operator");
 }
 
