@@ -33,6 +33,7 @@ int main() {
 
 	// Using ifstream to open the input file
 	ifstream input_file;
+
 	input_file.open("Test_case_1.txt");
 
 	// Checking whether input file can be opened or not
