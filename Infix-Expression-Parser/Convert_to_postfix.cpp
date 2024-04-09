@@ -1,3 +1,5 @@
+
+// Importing the modules
 #include "Convert_to_postfix.h"
 #include "Expression_Parser.h"
 #include <iostream>
@@ -8,8 +10,10 @@
 
 using namespace std;
 
+// Constructor
 Convert_to_postfix::Convert_to_postfix() {}
 
+// Destructor
 Convert_to_postfix::~Convert_to_postfix() {}
 
 
@@ -92,7 +96,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 				operand_stk.pop();
 			}
 
-			 
+			
 			if (token != "=" && token != "|" && token != "&") {
 				operand_stk.push(token);
 			}
@@ -105,6 +109,7 @@ string Convert_to_postfix::infix_to_postfix(const string& infix_string) {
 		operand_stk.pop();
 	}
 
+	// Returning
 	return output_string.str();
 
 }

@@ -34,6 +34,7 @@ int main() {
 	// Using ifstream to open the input file
 	ifstream input_file;
 
+	// Opening input file
 	input_file.open("Test_case_1.txt");
 
 	// Checking whether input file can be opened or not
@@ -51,11 +52,11 @@ int main() {
 	// Using getline to read the entire line
 	while (getline(input_file, line_string)) {
 
+		// Checking if the line string is empty
 		if (line_string == "") {
 			break;
 		}
 
-		// parsing and evaluating the formatted infix string using the parser instance
 		int result = parser.parse_and_evaluate(line_string);
 
 		// Checking for Error
@@ -65,9 +66,9 @@ int main() {
 
 	}
 
-	// closing the input file
+
 	input_file.close();
 
-	// returning
+
 	return 0;
 }

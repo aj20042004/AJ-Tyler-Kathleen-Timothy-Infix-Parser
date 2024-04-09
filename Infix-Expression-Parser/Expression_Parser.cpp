@@ -90,6 +90,7 @@ int Expression_Parser::precedence(const string& str_operator) {
 		return 1;
 	}
 
+	// Throw error if operator is not supported
 	throw exception("Unsupported operator");
 }
 

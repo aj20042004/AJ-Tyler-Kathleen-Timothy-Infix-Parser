@@ -1,3 +1,5 @@
+
+// Importing the modules
 #include "Evaluate_postfix.h"
 #include "Expression_Parser.h"
 #include <iostream>
@@ -8,8 +10,10 @@
 
 using namespace std; 
 
+// Constructor
 Evaluate_postfix::Evaluate_postfix() {}
 
+// Destructor
 Evaluate_postfix::~Evaluate_postfix() {}
 
 
