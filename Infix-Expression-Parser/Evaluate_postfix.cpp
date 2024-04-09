@@ -28,7 +28,8 @@ int Evaluate_postfix::postfix_evaluator(const string& postfix) {
 
 	// Creating a while loop 
 	while (iss >> current_token) {
-
+		
+	
 		// Adding the token to the operand stack if the token is digit
 		if (isdigit(current_token.front())) { operand_stk.push(stoi(current_token)); }
 
