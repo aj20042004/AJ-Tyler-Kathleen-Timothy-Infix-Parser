@@ -39,30 +39,30 @@ Changelog:
 
 Future Improvements:
 
-•	Support for more operators and functions:
+-	Support for more operators and functions:
   Improve the parser to support additional operators and functions, this could mean implementing more logic in order for the program to receive various new mathematical, logical, or bitwise operators.
 
-•	Memory Management:
+-	Memory Management:
   Make sure memory usage is optimized, especially when dealing with larger expressions. Techniques like object pooling or even smart pointers can efficiently manage memory while avoiding any unnecessary allocations or deallocations.
 
-•	Interactive Mode:
+-	Interactive Mode:
   Allow users to only enter expressions one at a time for immediate feedback or results that can inform the user step by step what procedures or occurring.
 
-•	Error Recovery:
+-	Error Recovery:
   Having an in-depth error recovery mechanism in order to gracefully handle syntax errors in expressions and provide valuable feedback to users without instantly terminating parsing.
 
-•	Database Integration:
+-	Database Integration:
   Integrating a database system into the application to store and manage expression data, user preferences and evaluation results. This integration can provide advantages such as persistence, scalability and data management capabilities.
 
-•	Graphical User Interface (GUI): 
+-	Graphical User Interface (GUI): 
   Developing a GUI application to provide a user-friendly interface for inputting expressions, displaying the results and possibly visualizing the parsing and evaluating process.
 
-•	Support for floating-point numbers:
+-	Support for floating-point numbers:
   Enhancing the parser to support floating-point numbers would make it more powerful and more useful for a wider range of applications.
 
-•	Variable Support:
+-	Variable Support:
   Extend the parser to support variables. This would allow users to define and use variables within expressions and enhance the utility of the parser.
 
-•	History Session:
+-	History Session:
   Implementing a history and session management would allow the users to refer back to previous calculations.
 
