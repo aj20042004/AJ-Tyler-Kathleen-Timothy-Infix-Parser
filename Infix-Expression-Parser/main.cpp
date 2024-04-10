@@ -1,7 +1,4 @@
 
-// Notes:
-// In the input file, use "Hyphen" for minus sign
-
 // Importing the modules
 #include <string>
 #include <iostream>
@@ -20,7 +17,7 @@ int main() {
 	ifstream input_file;
 
 	// Opening input file
-	input_file.open("Test_case_1.txt");
+	input_file.open("Test_case_2.txt");
 
 	// Checking whether input file can be opened or not
 	if (!input_file) {
