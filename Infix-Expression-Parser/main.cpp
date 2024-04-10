@@ -1,19 +1,4 @@
 
-// Questions for professor:
-// ------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
-// 1) 
-// 2) 
-
-
-// Need to Complete:
-// -------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// Creating Test cases, checking the correctness of the program, Test cases documentation in report, future requirements ( 4 ideas )  - Kathleen Dunn
-// System design, data structures, 4 ideas for future improvements part in report. Convert_to_postfix and Evaluate_postfix files in-line comments - Timothy Huffman
-		
-// Bugs needs to be fixed:
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------------
-// 1)
-
 // Notes:
 // In the input file, use "Hyphen" for minus sign
 
@@ -35,7 +20,7 @@ int main() {
 	ifstream input_file;
 
 	// Opening input file
-	input_file.open("Test_case_3.txt");
+	input_file.open("Test_case_1.txt");
 
 	// Checking whether input file can be opened or not
 	if (!input_file) {
