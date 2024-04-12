@@ -17,7 +17,7 @@ int main() {
 	ifstream input_file;
 
 	// Opening input file
-	input_file.open("Test_case_3.txt");
+	input_file.open("Test_case_1.txt");
 
 	// Checking whether input file can be opened or not
 	if (!input_file) {
